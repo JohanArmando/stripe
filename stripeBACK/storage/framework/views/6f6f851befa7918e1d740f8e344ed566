@@ -1,0 +1,58 @@
+	 <?php $__env->startSection('content'); ?>
+	 <div class="container">
+	 	<div class="row">
+		 	<div class="col-md-6 col-md-offset-3">
+		 		<form 
+						action="<?php echo e(url('suscription/plan')); ?>"
+					method="POST">
+					<input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
+					<div class="row">
+						<label for="">Basico</label>
+					</div>
+					<input type="submit" value="
+					<?php if(Auth::user()->tendaz_plan == 'basic'): ?>
+						Pagar Plan
+					<?php elseif(Auth::user()->tendaz_plan == 'premiun'): ?>
+					Bajar plan
+					<?php endif; ?>
+					" class="btn btn-primary 
+					<?php if(Auth::user()->tendaz_plan == 'basic'): ?>
+						active
+					<?php endif; ?>
+					)
+					">
+					<input type="hidden" name="plan" value="basic">
+				</form>
+		 	</div>
+	 	</div>
+	 	<div class="row">
+		 	<div class="col-md-6 col-md-offset-3">
+		 		<form action="<?php echo e(url('suscription/plan')); ?>" method="POST">
+					<input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
+					<div class="row">
+						<label for="">Premium</label>
+					</div>
+					<input type="submit" value="
+						<?php if(Auth::user()->tendaz_plan == 'premiun'): ?>
+						Pagar Plan
+					<?php elseif(Auth::user()->tendaz_plan == 'basic'): ?>
+					Subir  plan
+					<?php endif; ?>
+					" class="btn btn-primary 	
+					<?php if(Auth::user()->tendaz_plan == 'premiun'): ?>
+						active
+					<?php endif; ?>">
+					<input type="hidden" name="plan" value="premiun">
+				</form>
+		 	</div>
+	 	</div>
+	 </div>
+		
+	 <?php $__env->stopSection(); ?>
+	  <?php $__env->startSection('scripts'); ?>
+		<script src="https://js.stripe.com/v2/"></script>
+		<script>
+			
+		</script>
+	 <?php $__env->stopSection(); ?>
+<?php echo $__env->make('template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

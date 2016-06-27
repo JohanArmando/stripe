@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Payment</div>
+     
+                    <div class="panel-body">
+                    <form action="" method="POST">
+
+                            <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
+  <script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="<?php echo e(env('sk_test_WbvFHX1YZOCGopZRaVf2nKXg')); ?>"
+    data-amount="1000"
+    data-name="Pago semanal"
+    data-description="10.00$"
+    data-image="/img/documentation/checkout/marketplace.png"
+    data-locale="auto">
+  </script>
+</form>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
