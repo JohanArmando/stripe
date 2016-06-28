@@ -9,15 +9,10 @@ use App\Http\Controllers\Controller;
 use \Laravel\Cashier\WebhookController as BaseController;
 class StripeController extends BaseController
 {  
- public function handleOrderPaymentSucceeded()
+  public function handleOrderPaymentSucceeded(array $payload)
     {
-   $body = @file_get_contents('php://input');
-$event_json = json_decode($body);
-
-// for extra security, retrieve from the Stripe API
-$event_id = $event_json->id;
-$event = \Stripe_Event::retrieve($event_id);
-
+        Log::info('Payment Succeeded - StripeWebhook - handleOrderPaymentSucceeded()', ['details' => json_encode($payload)]);
+        return new Response('Webhook Handled', 200);
     }
 
     public function test(){

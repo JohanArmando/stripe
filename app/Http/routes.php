@@ -41,10 +41,8 @@ Route::group(['prefix' => 'suscription'] , function(){
 
 	
 });
-Route::group(['prefix' => 'wehook' , 'namespace' => 'wehook'] , function() {
-	Route::post('stripe', '\Laravel\Cashier\WebhookController@handleWebhook');
-
-		Route::get('/stripe/test/payment/succeeded', array('uses' => 'StripeController@test'));
+	Route::group(['prefix' => 'wehook' , 'namespace' => 'wehook'] , function() {
+		Route::post('stripe', 'StripeController@handleWebhook');
 	});
 
 
