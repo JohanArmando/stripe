@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<?php if(Session::has('notice')): ?>
+		<div class="alert alert-success">
+			<?php echo e(Session::get('notice')); ?>
+
+		</div>
+	<?php endif; ?>
+	<?php if(Auth::check()): ?>
+		Welcome <?php echo e(Auth::user()->name); ?>
+
+		<a href="<?php echo e(url('auth/logout')); ?>">Desloguearse</a>
+	<?php endif; ?>
+</body>
+</html>
