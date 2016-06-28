@@ -12,12 +12,7 @@ class StripeController extends BaseController
   public function handleOrderPaymentSucceeded(array $payload)
     {
         \Log::info('Payment Succeeded - StripeWebhook - handleOrderPaymentSucceeded()', ['details' => json_encode($payload)]);
-        return new \Response('Webhook Handled', 200);
+        return response()->json('Webhook Succeeded');
     }
 
-    public function test(){
-        $tester = new \TeamTNT\Stripe\WebhookTester('http://stripe.local/wehook/stripe');
-        $response = $tester->setVersion('2014-09-08')->triggerEvent('charge.succeeded');
-       
-    }
 }
